@@ -1,25 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+import React from "react";
+import { useState } from "react";
+import './App.css';
+import Main from "./Main";
+import Menu from "./Menu/Menu";
+
+
+const App = () => {
+  const [menuActive, setMenuActive] = useState(false)
+  const items = [{value: 'Расходы', href: '/main'},{value: 'Все отчеты', href: '/main'},{value: 'Доходы', href: '/mainTwo'},{value: 'Все отчеты', href: '/main'}]
+  return(
+    <div className="app">
+      <nav>
+        
+          <div className="burger-btn" onClick={()=> setMenuActive(!menuActive)}>
+            <div class="tri_poloski ">
+              <span >☰ </span>
+            </div>
+            
+          </div>
+            <h4>Иванов Иван Иванович</h4>
+            
+            
+            <div className="login"></div>
+          
+        
+        
+        
+        
+        
+      </nav>
+      <main>
+        <Main/> 
+      </main>
+
+      <Menu active ={menuActive} setactive={setMenuActive} header={'Главная'} items={items}/>
     </div>
   );
-}
+};
 
 export default App;
